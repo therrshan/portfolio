@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Portfolio{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .filter-section h3 {
+        color: #00f5ff;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .filter-btn.active {
+        background: #00f5ff;
+        border-color: #00f5ff;
+        color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        border-color: #00f5ff;
+        box-shadow: 0 10px 30px rgba(0, 245, 255, 0.2);
+    }
+
+    .project-header {
+        margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+        color: #00f5ff;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+
+    .project-date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .domain-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .domain-badge {
+        padding: 0.2rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin: 1rem 0;
+    }
+
+    .tech-tag {
+        background: rgba(0, 245, 255, 0.1);
+        color: #00f5ff;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(0, 245, 255, 0.2);
+    }
+
+    .project-description {
+        color: #cccccc;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .project-description ul {
+        margin-left: 1.5rem;
+        color: #cccccc;
+        line-height: 1.6;
+    }
+
+    .project-description li {
+        margin-bottom: 0.5rem;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .project-link {
+        color: #ff00f5;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(255, 0, 245, 0.3);
+        border-radius: 25px;
+        font-size: 0.9rem;
+    }
+
+    .project-link:hover {
+        color: #00f5ff;
+        border-color: rgba(0, 245, 255, 0.3);
+        background: rgba(0, 245, 255, 0.1);
+    }
+
+    .no-projects {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        grid-column: 1 / -1;
+        padding: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        .filter-buttons {
+            justify-content: center;
+        }
+        
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .domain-badges, .tech-tags {
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="section">
+        <h1>My Projects</h1>
+        
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <h3>🔍 Filter by Domain</h3>
+            <p style="color: #cccccc; margin-bottom: 1rem;">
+                Click on a domain to filter projects by technology area
+            </p>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-domain="all">All Projects</button>
+                {% for domain in domains %}
+                <button class="filter-btn" data-domain="{{ domain }}" 
+                        {% if domain_colors and domain in domain_colors %}
+                        style="border-color: {{ domain_colors[domain] }};"
+                        {% endif %}>
+                    {{ domain }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Projects Container -->
+        <div class="projects-grid" id="projectsGrid">
+            {% if projects %}
+                {% for project in projects %}
+                <div class="project-card" data-domains="{{ project.domains|join(',') }}">
+                    <div class="project-header">
+                        <h3>{{ project.title }}</h3>
+                        <div class="project-date">{{ project.duration }}</div>
+                    </div>
+                    
+                    <!-- Domain Badges -->
+                    {% if project.domains %}
+                    <div class="domain-badges">
+                        {% for domain in project.domains %}
+                        <span class="domain-badge" 
+                              {% if domain_colors and domain in domain_colors %}
+                              style="background-color: {{ domain_colors[domain] }};"
+                              {% else %}
+                              style="background-color: #666;"
+                              {% endif %}>
+                            {{ domain }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Technology Tags -->
+                    {% if project.technologies %}
+                    <div class="tech-tags">
+                        {% for tech in project.technologies %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="project-description">
+                        {% if project.description %}
+                            <ul>
+                                {% for item in project.description %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="project-links">
+                        {% if project.link %}
+                        <a href="{{ project.link }}" target="_blank" class="project-link">GitHub</a>
+                        {% endif %}
+                        {% if project.live_demo %}
+                        <a href="{{ project.live_demo }}" target="_blank" class="project-link">Live Demo</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="project-card">
+                    <h3>📝 No Projects Found</h3>
+                    <p style="color: #cccccc; margin-bottom: 1rem;">
+                        Create a <code style="background: rgba(255,255,255,0.1); padding: 0.2rem 0.5rem; border-radius: 4px;">projects.json</code> file in your project directory.
+                    </p>
+                    <div class="project-links">
+                        <a href="/debug-projects" class="project-link">Debug Projects</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Project filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedDomain = this.getAttribute('data-domain');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter projects
+            filterProjects(selectedDomain);
+        });
+    });
+    
+    function filterProjects(domain) {
+        let visibleCount = 0;
+        
+        projectCards.forEach(card => {
+            const cardDomains = card.getAttribute('data-domains');
+            
+            if (domain === 'all' || (cardDomains && cardDomains.includes(domain))) {
+                card.style.display = 'block';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, visibleCount * 100);
+                
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show "no projects" message if no projects visible
+        if (visibleCount === 0 && domain !== 'all') {
+            showNoProjectsMessage(domain);
+        } else {
+            removeNoProjectsMessage();
+        }
+    }
+    
+    function showNoProjectsMessage(domain) {
+        removeNoProjectsMessage();
+        const grid = document.getElementById('projectsGrid');
+        const message = document.createElement('div');
+        message.className = 'no-projects';
+        message.id = 'noProjectsMessage';
+        message.innerHTML = `No projects found in the <strong>${domain}</strong> domain.`;
+        grid.appendChild(message);
+    }
+    
+    function removeNoProjectsMessage() {
+        const message = document.getElementById('noProjectsMessage');
+        if (message) {
+            message.remove();
+        }
+    }
+    
+    // Add animation to project cards on page load
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 150);
+    });
+});
+</script>
+{% endblock %}

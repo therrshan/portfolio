@@ -1,0 +1,410 @@
+{% extends "base.html" %}
+
+{% block title %}Resume - Portfolio{% endblock %}
+
+{% block extra_css %}
+<style>
+    .resume-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .download-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .domain-selector {
+        margin-bottom: 2rem;
+    }
+
+    .domain-select {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 245, 255, 0.3);
+        border-radius: 10px;
+        padding: 0.8rem 1.2rem;
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        min-width: 250px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .domain-select:focus {
+        outline: none;
+        border-color: #00f5ff;
+        box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.2);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .domain-select option {
+        background: #1a1a1a;
+        color: white;
+        padding: 0.5rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
+
+    .download-btn, .preview-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    .download-btn {
+        background: linear-gradient(45deg, #00f5ff, #ff00f5);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+    }
+
+    .preview-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .preview-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .pdf-container {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    .pdf-viewer {
+        width: 100%;
+        height: 800px;
+        border: none;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .pdf-fallback {
+        text-align: center;
+        padding: 3rem;
+        color: #cccccc;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+        border: 2px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    .pdf-fallback h3 {
+        color: #00f5ff;
+        margin-bottom: 1rem;
+    }
+
+    .upload-instructions {
+        background: rgba(0, 245, 255, 0.1);
+        border: 1px solid rgba(0, 245, 255, 0.3);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        color: #00f5ff;
+    }
+
+    .upload-instructions h4 {
+        margin-bottom: 1rem;
+        color: #00f5ff;
+    }
+
+    .upload-instructions code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+    }
+
+    @media (max-width: 768px) {
+        .pdf-viewer {
+            height: 600px;
+        }
+        
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .download-btn, .preview-btn {
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+        
+        .domain-select {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="section">
+        <h1>Resume</h1>
+        
+        <div class="download-section">
+            <p style="color: #cccccc; margin-bottom: 1.5rem;">
+                Select your area of interest and download my specialized resume.
+            </p>
+            
+            <!-- Domain Selector -->
+            <div class="domain-selector">
+                <label for="resumeType" style="color: #00f5ff; font-weight: 500; margin-bottom: 0.5rem; display: block;">
+                    Choose Resume Type:
+                </label>
+                <select id="resumeType" class="domain-select" onchange="updateResume()">
+                    <option value="general">General Full Stack</option>
+                    <option value="ml">Machine Learning Engineer</option>
+                    <option value="ai">AI/ML Specialist</option>
+                    <option value="backend">Backend Developer</option>
+                </select>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/static/resume_general.pdf" download="YourName_Resume_General.pdf" class="download-btn" id="downloadBtn">
+                    📄 Download <span id="resumeLabel">General</span> Resume
+                </a>
+                
+                <button class="preview-btn" onclick="togglePreview()" id="previewBtn">
+                    👁️ Preview <span id="previewLabel">General</span> Resume
+                </button>
+            </div>
+        </div>
+
+        <div class="pdf-container" id="pdfContainer" style="display: none;">
+            <h2 style="color: #00f5ff; margin-bottom: 1.5rem; text-align: center;">
+                <span id="previewTitle">General Full Stack</span> Resume Preview
+            </h2>
+            
+            <!-- PDF Viewer -->
+            <div id="pdfViewer">
+                <iframe src="/static/resume_general.pdf" class="pdf-viewer" id="pdfFrame">
+                    <!-- Fallback for browsers that don't support iframe PDF viewing -->
+                </iframe>
+            </div>
+            
+            <!-- Fallback content when PDF is not available -->
+            <div class="pdf-fallback" id="pdfFallback" style="display: none;">
+                <h3>📄 PDF Not Available</h3>
+                <p>The <span id="fallbackType">selected</span> resume PDF will appear here once you upload it.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="#" onclick="checkPDF()" style="color: #00f5ff; text-decoration: underline;">
+                        🔄 Try to load PDF again
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Resume type configuration
+const resumeTypes = {
+    'general': {
+        file: 'resume_general.pdf',
+        label: 'General Full Stack',
+        downloadName: 'YourName_Resume_General.pdf'
+    },
+    'ml': {
+        file: 'resume_ml.pdf',
+        label: 'Machine Learning',
+        downloadName: 'YourName_Resume_ML.pdf'
+    },
+    'ai': {
+        file: 'resume_ai.pdf',
+        label: 'AI Specialist',
+        downloadName: 'YourName_Resume_AI.pdf'
+    },
+    'backend': {
+        file: 'resume_backend.pdf',
+        label: 'Backend Developer',
+        downloadName: 'YourName_Resume_Backend.pdf'
+    }
+};
+
+let previewVisible = false;
+
+// Toggle preview visibility
+function togglePreview() {
+    const container = document.getElementById('pdfContainer');
+    const previewBtn = document.getElementById('previewBtn');
+    const selector = document.getElementById('resumeType');
+    const config = resumeTypes[selector.value];
+    
+    if (previewVisible) {
+        // Hide preview
+        container.style.display = 'none';
+        previewBtn.innerHTML = `👁️ Preview ${config.label} Resume`;
+        previewVisible = false;
+    } else {
+        // Show preview
+        container.style.display = 'block';
+        previewBtn.innerHTML = `🙈 Hide Preview`;
+        previewVisible = true;
+        
+        // Load the current PDF (always load the selected one)
+        loadCurrentPDF();
+        
+        // Smooth scroll to preview
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+        
+        // Add fade-in animation
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            container.style.transition = 'all 0.5s ease';
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
+        }, 50);
+    }
+}
+
+// Update resume when dropdown changes
+function updateResume() {
+    const selector = document.getElementById('resumeType');
+    const selectedType = selector.value;
+    const config = resumeTypes[selectedType];
+    
+    if (!config) return;
+    
+    // Update download button
+    const downloadBtn = document.getElementById('downloadBtn');
+    const resumeLabel = document.getElementById('resumeLabel');
+    downloadBtn.href = `/static/${config.file}`;
+    downloadBtn.download = config.downloadName;
+    resumeLabel.textContent = config.label;
+    
+    // Update preview button
+    const previewLabel = document.getElementById('previewLabel');
+    const previewBtn = document.getElementById('previewBtn');
+    previewLabel.textContent = config.label;
+    
+    // Update preview button text based on current state
+    if (previewVisible) {
+        previewBtn.innerHTML = `🙈 Hide Preview`;
+        // If preview is visible, immediately load the new PDF
+        loadCurrentPDF();
+    } else {
+        previewBtn.innerHTML = `👁️ Preview ${config.label} Resume`;
+    }
+    
+    // Update preview title
+    const previewTitle = document.getElementById('previewTitle');
+    previewTitle.textContent = config.label;
+    
+    // Update fallback message
+    const fallbackType = document.getElementById('fallbackType');
+    fallbackType.textContent = config.label.toLowerCase();
+    
+    console.log(`Switched to ${config.label} resume: ${config.file}`);
+}
+
+// Load the current PDF based on selection
+function loadCurrentPDF() {
+    const selector = document.getElementById('resumeType');
+    const config = resumeTypes[selector.value];
+    const iframe = document.getElementById('pdfFrame');
+    
+    // Update PDF viewer
+    iframe.src = `/static/${config.file}?t=${new Date().getTime()}`; // Add timestamp to prevent caching
+    
+    // Check if new PDF loads
+    setTimeout(() => checkPDF(), 500);
+}
+
+// Check if PDF loads successfully
+function checkPDF() {
+    const iframe = document.getElementById('pdfFrame');
+    const fallback = document.getElementById('pdfFallback');
+    const viewer = document.getElementById('pdfViewer');
+    const selector = document.getElementById('resumeType');
+    const currentType = resumeTypes[selector.value];
+    
+    // Make a test request to see if PDF exists
+    fetch(`/static/${currentType.file}`, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                console.log(`${currentType.label} PDF exists`);
+                viewer.style.display = 'block';
+                fallback.style.display = 'none';
+            } else {
+                throw new Error('PDF not found');
+            }
+        })
+        .catch(() => {
+            console.log(`${currentType.label} PDF not found`);
+            viewer.style.display = 'none';
+            fallback.style.display = 'block';
+        });
+}
+
+// Initialize page when loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.getElementById('pdfFrame');
+    const selector = document.getElementById('resumeType');
+    
+    // Set up error handling for iframe
+    iframe.addEventListener('error', function() {
+        console.log('PDF failed to load');
+        document.getElementById('pdfViewer').style.display = 'none';
+        document.getElementById('pdfFallback').style.display = 'block';
+    });
+    
+    // Set up load handling for iframe
+    iframe.addEventListener('load', function() {
+        console.log('PDF loaded successfully');
+        document.getElementById('pdfFallback').style.display = 'none';
+        document.getElementById('pdfViewer').style.display = 'block';
+    });
+    
+    // Add smooth transition effect when changing resumes
+    selector.addEventListener('change', function() {
+        if (previewVisible) {
+            const viewer = document.getElementById('pdfViewer');
+            viewer.style.opacity = '0.7';
+            viewer.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                viewer.style.opacity = '1';
+            }, 400);
+        }
+    });
+});
+</script>
+{% endblock %}
