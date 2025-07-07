@@ -179,6 +179,10 @@ def api_projects():
         'total': len(projects_data)
     })
 
+@app.route('/ml-scratch')
+def ml_scratch():
+    return render_template('ml_scratch.html')
+
 @app.route('/resume')
 def resume():
     return render_template('resume.html')
@@ -228,4 +232,5 @@ def debug_projects():
 if __name__ == '__main__':
     app.run(debug=True)
 
-app.debug = False  # Enable debug mode for development
+# For Vercel deployment
+app.debug = False
