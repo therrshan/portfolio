@@ -247,11 +247,7 @@
                     
                     <div class="project-description">
                         {% if project.description %}
-                            <ul>
-                                {% for item in project.description %}
-                                <li>{{ item }}</li>
-                                {% endfor %}
-                            </ul>
+                            <p>{{ project.description[0] }}</p>
                         {% endif %}
                     </div>
                     

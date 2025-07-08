@@ -28,6 +28,7 @@
       "Docker",
       "GitOps"
     ],
+    "link": "https://github.com/therrshan/churn-pred",
     "duration": "Jan 2025 -- Mar 2025",
     "description": [
       "Engineered a real-time ML pipeline with MLflow for experiment tracking, version control, and continuous integration, inspired by GitOps practices for production-ready deployment.",
@@ -38,7 +39,7 @@
   },
   {
     "title": "Predictive Analytics for NBA Player Performance and Game Outcomes",
-    "technologies": ["Python", "scikit-learn", "NBA-API", "XGBoost", "LSTM", "time-series"],
+    "technologies": ["Python", "NBA-API", "XGBoost", "LSTM", "Data Analysis"],
     "duration": "Nov 2024 -- Dec 2024",
     "description": [
       "Designed an end-to-end machine learning pipeline for predicting NBA game outcomes using real-time and historical player behavior data, achieving 83% accuracy.",
@@ -73,7 +74,7 @@
   },
    {
     "title": "Fraud Detection in Financial Transactions",
-    "technologies": ["Python", "XGBoost", "Isolation Forest", "PCA"],
+    "technologies": ["Python", "XGBoost", "Isolation Forest", "PCA", "Data Analysis"],
     "duration": "Jan 2024 - Feb 2024",
     "description": [
       "Built a fraud detection system processing financial transactions using supervised and unsupervised learning.",
@@ -110,7 +111,7 @@
   },
   {
     "title": "ML Pipeline Orchestrator",
-    "technologies": ["Python", "Bash", "PyTorch"],
+    "technologies": ["Python", "Bash", "DAG", "ML Pipelines"],
     "link": "https://github.com/therrshan/ml-orchestrator",
     "duration": "May 2025 - Jun 2025",
     "description": [
@@ -122,6 +123,20 @@
       "Delivered real ML examples, including a PyTorch-based MNIST computer vision pipeline integrated with the orchestrator."
     ]
   },
+  {
+  "title": "ML on Encrypted Data",
+  "technologies": ["Python", "PySEAL"],
+  "link": "https://github.com/therrshan/secure-ml", 
+  "duration": "Feb 2025 - Apr 2025",
+  "description": [
+    "Built an ML inference pipeline capable of operating directly on encrypted data using the CKKS scheme from the PySEAL library, ensuring complete data privacy throughout the workflow.",
+    "Adapted standard algorithms like logistic regression and linear SVM for compatibility with encrypted arithmetic while maintaining acceptable accuracy and computational efficiency.",
+    "Evaluated performance trade-offs between encrypted and plaintext inference, achieving less than 15% accuracy drop with full confidentiality.",
+    "Containerized the full workflow using Docker with isolated modules for encryption, model training, inference, and secure decryption.",
+    "Focused on applications in privacy-sensitive domains like healthcare and finance, demonstrating end-to-end secure ML lifecycle without exposing raw data."
+  ]
+},
+
   {
     "title": "Kubernetes-Based ML Inference API",
     "technologies": ["Python", "FastAPI", "Kubernetes", "Prometheus"],
@@ -172,6 +187,7 @@
   {
     "title": "End-to-End Image Classification on CIFAR-10",
     "technologies": ["Python", "PyTorch", "MLflow", "Flask", "CI/CD"],
+    "link": "https://github.com/therrshan/mlops-cifar10",
     "duration": "Feb 2025 - Mar 2025",
     "description": [
       "Implemented a feature extraction pipeline for CIFAR-10 images by flattening pixel data, normalizing the data and applying standard augmentations for robust classification.",

@@ -262,7 +262,6 @@
                 <li><a href="/about" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
                 <li><a href="/projects" class="{% if request.endpoint == 'projects' %}active{% endif %}">Projects</a></li>
                 <li><a href="/ml-scratch" class="{% if request.endpoint == 'ml_scratch' %}active{% endif %}">ML from Scratch</a></li>
-                <li><a href="/resume" class="{% if request.endpoint == 'resume' %}active{% endif %}">Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -271,6 +270,8 @@
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Footer -->
 
     <script>
         // Smooth transitions between pages

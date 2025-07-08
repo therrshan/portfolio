@@ -4,23 +4,16 @@ import os
 
 app = Flask(__name__)
 
-# Configuration
 PROJECTS_FILE = 'projects.json'
 
-# Technology Domain Mapping
 TECH_DOMAINS = {
     'AI': ['TensorFlow', 'PyTorch', 'Keras', 'OpenAI', 'LangChain', 'Hugging Face', 'BERT', 'GPT', 'Neural Networks', 'Deep Learning'],
-    'ML': ['Scikit-learn', 'XGBoost', 'Random Forest', 'SVM', 'KNN', 'Logistic Regression', 'Decision Trees', 'Ensemble Methods'],
+    'ML': ['Python', 'Scikit-learn', 'XGBoost', 'Random Forest', 'SVM', 'KNN', 'Logistic Regression', 'Decision Trees', 'Ensemble Methods'],
     'DS': ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Jupyter', 'Statistics', 'Data Analysis', 'Visualization'],
     'DE': ['Apache Spark', 'Kafka', 'Airflow', 'ETL', 'Data Pipeline', 'Apache Beam', 'Snowflake', 'BigQuery', 'Data Warehouse'],
-    'Cloud': ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'Serverless', 'Lambda', 'EC2', 'S3'],
-    'Backend': ['Python', 'Flask', 'Django', 'FastAPI', 'Node.js', 'Express', 'REST API', 'GraphQL', 'Microservices'],
-    'Frontend': ['React', 'Vue.js', 'Angular', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Tailwind', 'Bootstrap'],
-    'Database': ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'SQLite', 'DynamoDB', 'Elasticsearch', 'Neo4j'],
-    'DevOps': ['CI/CD', 'GitHub Actions', 'Jenkins', 'GitLab CI', 'Monitoring', 'Logging', 'Testing', 'Deployment']
+    'Mlops': ['MLflow', 'Kubeflow', 'DVC', 'Model Deployment', 'CI/CD', 'GitOps', 'Model Monitoring', 'Experiment Tracking', 'Kubernetes'],
 }
 
-# Domain Colors for badges
 DOMAIN_COLORS = {
     'AI': '#ff6b6b',        # Red
     'ML': '#4ecdc4',        # Teal
@@ -36,40 +29,72 @@ DOMAIN_COLORS = {
 def get_projects():
     """Load projects from JSON file"""
     if not os.path.exists(PROJECTS_FILE):
-        print(f"❌ Projects file not found: {PROJECTS_FILE}")
+        print(f"Projects file not found: {PROJECTS_FILE}")
         create_sample_projects_file()
     
     try:
         with open(PROJECTS_FILE, 'r', encoding='utf-8') as file:
             projects = json.load(file)
         
-        # Process each project
         for project in projects:
-            # Normalize field names (handle both 'title'/'name' and 'duration'/'date')
             if 'title' in project and 'name' not in project:
                 project['name'] = project['title']
             if 'duration' in project and 'date' not in project:
                 project['date'] = project['duration']
             
-            # Add domain badges based on technologies
             project['domains'] = get_project_domains(project.get('technologies', []))
             
-            # Add primary language/technology
             project['language'] = project['technologies'][0] if project.get('technologies') else 'Unknown'
             
-            # Ensure required fields exist
             project.setdefault('link', None)
-            project.setdefault('github_link', project.get('link'))  # Map link to github_link
+            project.setdefault('github_link', project.get('link')) 
             project.setdefault('live_demo', None)
             project.setdefault('description', [])
-            project.setdefault('description_items', project.get('description', []))  # Map description to description_items
+            project.setdefault('description_items', project.get('description', []))
         
-        print(f"📊 Loaded {len(projects)} projects from {PROJECTS_FILE}")
+        projects = sort_projects_by_date(projects)
+        
+        print(f"Loaded {len(projects)} projects from {PROJECTS_FILE}")
         return projects
         
     except Exception as e:
-        print(f"🔥 Error loading projects: {e}")
+        print(f"Error loading projects: {e}")
         return []
+
+def sort_projects_by_date(projects):
+    """Sort projects by date, newest first"""
+    def extract_end_date(project):
+        duration = project.get('duration', project.get('date', ''))
+        if not duration:
+            return '1900-01' 
+        
+        if '--' in duration:
+            end_date = duration.split('--')[1].strip()
+        else:
+            end_date = duration.strip()
+        
+        if end_date.lower() == 'present':
+            return '9999-12'
+        
+        month_mapping = {
+            'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04',
+            'may': '05', 'jun': '06', 'jul': '07', 'aug': '08',
+            'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12'
+        }
+        
+        try:
+            parts = end_date.split()
+            if len(parts) >= 2:
+                month_name = parts[0].lower()[:3]
+                year = parts[1]
+                month_num = month_mapping.get(month_name, '12')
+                return f"{year}-{month_num}"
+            else:
+                return f"{end_date}-12"
+        except:
+            return '1900-01'
+    
+    return sorted(projects, key=extract_end_date, reverse=True)
 
 def get_project_domains(technologies):
     """Determine which domains a project belongs to based on its technologies"""
@@ -77,7 +102,6 @@ def get_project_domains(technologies):
     
     for tech in technologies:
         for domain, domain_techs in TECH_DOMAINS.items():
-            # Case-insensitive matching
             if any(tech.lower() in dt.lower() or dt.lower() in tech.lower() for dt in domain_techs):
                 domains.add(domain)
     
@@ -127,9 +151,9 @@ def create_sample_projects_file():
     try:
         with open(PROJECTS_FILE, 'w', encoding='utf-8') as file:
             json.dump(sample_projects, file, indent=2)
-        print(f"📝 Created sample projects file: {PROJECTS_FILE}")
+        print(f"Created sample projects file: {PROJECTS_FILE}")
     except Exception as e:
-        print(f"🔥 Error creating sample file: {e}")
+        print(f"Error creating sample file: {e}")
 
 @app.route('/')
 def home():
@@ -143,12 +167,10 @@ def about():
 def projects():
     projects_data = get_projects()
     
-    # Get all unique domains for filtering
     all_domains = set()
     for project in projects_data:
         all_domains.update(project.get('domains', []))
     
-    # Debug: Print what we're passing to template
     print(f"🔧 Passing {len(projects_data)} projects to template")
     print(f"🔧 Available domains: {sorted(list(all_domains))}")
     print(f"🔧 Domain colors keys: {list(DOMAIN_COLORS.keys())}")
@@ -163,11 +185,9 @@ def api_projects():
     """API endpoint to get projects with optional filtering"""
     projects_data = get_projects()
     
-    # Get filter parameter
     domain_filter = request.args.get('domain')
     
     if domain_filter:
-        # Filter projects by domain
         filtered_projects = []
         for project in projects_data:
             if domain_filter in project.get('domains', []):
@@ -183,10 +203,6 @@ def api_projects():
 def ml_scratch():
     return render_template('ml_scratch.html')
 
-@app.route('/resume')
-def resume():
-    return render_template('resume.html')
-
 @app.route('/debug-projects')
 def debug_projects():
     """Debug route to test project loading and domain detection"""
@@ -197,7 +213,6 @@ def debug_projects():
     html += f"<p><strong>File exists:</strong> {os.path.exists(PROJECTS_FILE)}</p>"
     html += f"<p><strong>Projects found:</strong> {len(projects_data)}</p>"
     
-    # Show domain mapping
     html += "<h2>Domain Mapping:</h2>"
     for domain, techs in TECH_DOMAINS.items():
         color = DOMAIN_COLORS.get(domain, '#666')

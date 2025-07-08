@@ -16,6 +16,7 @@
         font-size: 1.1rem;
         color: #cccccc;
         line-height: 1.8;
+        text-align: justify;
     }
 
     .about-text p {
@@ -198,6 +199,15 @@
         box-shadow: 0 5px 15px rgba(0, 245, 255, 0.2);
     }
 
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        position: relative;
+        z-index: 2;
+    }
+
     @media (max-width: 768px) {
         .about-content {
             grid-template-columns: 1fr;
@@ -247,18 +257,21 @@
                 <p>My experience spans the full development lifecycle, with a focus on clean architecture, scalability, and explainability. Whether it’s deploying models, designing backend systems, or exploring new ML frameworks, I love diving deep into technical challenges and delivering well-engineered solutions.</p> 
                 
                 <p>Outside of core development, I actively follow advancements in AI research, contribute to open source, and enjoy breaking down complex topics through technical writing and experimentation. I’m a firm believer in continuous learning, collaboration, and building tools that empower others.</p>
-                
-                <a href="/projects" class="btn">View My Projects</a>
+
+                <div style="margin-top: 2rem;">
+                    <a href="/projects" class="btn" style="margin-right: 1rem;">View My Projects</a>
+                    <a href="/static/resume.pdf" download="Darshan-Rajopadhye-Resume.pdf" class="btn btn-resume">Download Resume</a>
+                </div>
             </div>
             
             <div class="about-image">
                 <div class="profile-pic">
-                    <span>👨‍💻</span>
+                    <img src="/static/profile.jpg" alt="Darshan Rajopadhye" class="profile-image">
                 </div>
             </div>
         </div>
 
-        <!-- Skills Section -->
+         <!-- Skills Section -->
         <div class="skills-section">
             <h2>Technical Skills</h2>
             <div class="skills-grid">
@@ -307,7 +320,8 @@
             </div>
         </div>
 
-        <!-- Experience Section -->
+
+ <!-- Experience Section -->
         <div class="experience-section">
             <h2>Experience</h2>
             <div class="timeline">
@@ -348,6 +362,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Contact Section -->
         <div class="contact-section">
