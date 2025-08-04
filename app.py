@@ -12,6 +12,7 @@ TECH_DOMAINS = {
     'DS': ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Jupyter', 'Statistics', 'Data Analysis', 'Visualization'],
     'DE': ['Apache Spark', 'Kafka', 'Airflow', 'ETL', 'Data Pipeline', 'Apache Beam', 'Snowflake', 'BigQuery', 'Data Warehouse'],
     'Mlops': ['MLflow', 'Kubeflow', 'DVC', 'Model Deployment', 'CI/CD', 'GitOps', 'Model Monitoring', 'Experiment Tracking', 'Kubernetes'],
+    'Dev': ['Flask', 'Django', 'FastAPI', 'Node.js', 'Express', 'Ruby on Rails', 'Spring Boot', 'Java', 'C#', 'Go','React', 'Vue.js', 'Angular', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'SASS', 'Bootstrap', 'Tailwind CSS']
 }
 
 DOMAIN_COLORS = {
