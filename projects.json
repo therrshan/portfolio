@@ -20,6 +20,108 @@
     ]
   },
   {
+  "title": "AI-Powered Code Review Assistant",
+  "technologies": [
+    "Python",
+    "Java",
+    ".NET",
+    "VS Code API",
+    "LangChain",
+    "Transformers",
+    "GitHub API"
+  ],
+  "link": "",
+  "duration": "Jul 2025 -- Present",
+  "description": [
+    "Built an intelligent IDE extension for VS Code that leverages a multi-agent system to provide real-time code reviews, refactoring suggestions, and security checks across Python and Java projects.",
+    "Designed modular MCP-style components to handle syntax analysis, style enforcement, and vulnerability detection, with seamless plugin architecture supporting future upgrades.",
+    "Integrated transformer-based models to generate contextual feedback, reducing code review time by 40% and catching common errors missed by static analyzers."
+  ]
+},
+{
+  "title": "Project Management Platform",
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "Socket.io",
+    "Prisma",
+    "Docker"
+  ],
+  "link": "https://github.com/therrshan/project-management-tool",
+  "duration": "Jul 2024 -- Present",
+  "description": [
+    "Developed a comprehensive project management web application with hierarchical workspace-project-board structure, supporting role-based access control (Admin, Member, Viewer) and real-time task collaboration using Socket.io.",
+    "Architected RESTful backend API with Node.js/Express, implementing JWT authentication with refresh tokens, comprehensive CRUD operations, and Prisma ORM for type-safe database interactions with PostgreSQL.",
+    "Built responsive React frontend with TypeScript, featuring drag-and-drop Kanban boards, modal-based workflows, user search functionality, and Zustand state management, styled with Tailwind CSS for modern UI/UX.",
+    "Implemented production-ready deployment pipeline with Docker containerization, multi-stage builds for optimized images, Kubernetes manifests for orchestration, and integrated Supabase for managed PostgreSQL hosting."
+  ]
+}
+,
+{
+  "title": "AI-Based Resume Feedback Tool",
+  "technologies": [
+    "Python",
+    "LangChain",
+    "Ollama",
+    "LLaMA 3",
+    "Pinecone",
+    "Streamlit"
+  ],
+  "link": "https://github.com/therrshan/resume-analyzer",
+  "duration": "Jul 2025 -- Present",
+  "description": [
+    "Built a modular LLM pipeline leveraging LangChain and LLaMa 3 to analyze resumes across clarity, role alignment, and tone dimensions using structured prompt chaining.",
+    "Implemented a retrieval-augmented generation (RAG) system using Pinecone to enable semantic matching between resume content and job descriptions, improving contextual grounding and factual alignment.",
+    "Integrated internal evaluation metrics to assess model performance on criteria like hallucination rate, response consistency, and content coverage across a curated benchmark of annotated resumes."
+  ]
+}
+,
+{
+  "title": "Real-Time Trading Analytics Platform",
+  "technologies": [
+    "Django REST Framework",
+    "WebRTC",
+    "scikit-learn",
+    "TensorFlow",
+    "PostgreSQL",
+    "TimescaleDB"
+  ],
+  "link": "",
+  "duration": "Present",
+  "description": [
+    "Built a sophisticated trading dashboard that processes live market data streams using WebRTC for ultra-low latency communication.",
+    "Implemented custom Django middleware to handle high-frequency tick data with async views for real-time processing.",
+    "Developed ML models using scikit-learn and TensorFlow for price prediction and anomaly detection.",
+    "Optimized time-series data storage with PostgreSQL and the TimescaleDB extension.",
+    "Provided real-time portfolio analytics including risk calculations and alerting."
+  ]
+}
+,
+{
+  "title": "LLM Diagnostic Dashboard",
+  "technologies": [
+    "React",
+    "FastAPI",
+    "PyTorch",
+    "Transformers",
+    "Tailwind CSS",
+    "Recharts",
+    "Vite"
+  ],
+  "link": "",
+  "duration": "Present",
+  "description": [
+    "Built a comprehensive web-based testing platform for evaluating Large Language Models across multiple diagnostic criteria.",
+    "Developed async model management system using FastAPI to handle concurrent model loading/unloading with memory optimization.",
+    "Implemented five core diagnostic tests: hallucination detection, bias analysis, toxicity assessment, consistency evaluation, and performance benchmarking.",
+    "Created real-time test monitoring with WebSocket-like polling for live progress tracking and results visualization using Recharts.",
+    "Designed plug-and-play architecture supporting HuggingFace Transformers, Ollama, and custom model providers with hot-swappable backends."
+  ]
+}
+,
+  {
     "title": "E-commerce Churn Prediction with Real-Time Inference",
     "technologies": [
       "Python",
