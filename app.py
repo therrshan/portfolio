@@ -9,7 +9,6 @@ PROJECTS_FILE = 'projects.json'
 TECH_DOMAINS = {
     'AI': ['TensorFlow', 'PyTorch', 'Keras', 'OpenAI', 'LangChain', 'Hugging Face', 'BERT', 'GPT', 'Neural Networks', 'Deep Learning'],
     'ML': ['Python', 'Scikit-learn', 'XGBoost', 'Random Forest', 'SVM', 'KNN', 'Logistic Regression', 'Decision Trees', 'Ensemble Methods'],
-    'DS': ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Jupyter', 'Statistics', 'Data Analysis', 'Visualization'],
     'DE': ['Apache Spark', 'Kafka', 'Airflow', 'ETL', 'Data Pipeline', 'Apache Beam', 'Snowflake', 'BigQuery', 'Data Warehouse'],
     'Mlops': ['MLflow', 'Kubeflow', 'DVC', 'Model Deployment', 'CI/CD', 'GitOps', 'Model Monitoring', 'Experiment Tracking', 'Kubernetes'],
     'Dev': ['Flask', 'Django', 'FastAPI', 'Node.js', 'Express', 'Ruby on Rails', 'Spring Boot', 'Java', 'C#', 'Go','React', 'Vue.js', 'Angular', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'SASS', 'Bootstrap', 'Tailwind CSS']
