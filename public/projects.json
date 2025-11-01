@@ -1,0 +1,353 @@
+[
+  {
+    "title": "Credit Risk Explainer with Real-Time Fairness & Interpretability",
+    "technologies": [
+      "Python",
+      "SHAP",
+      "LIME",
+      "XGBoost",
+      "Random Forest",
+      "Logistic Regression",
+      "Streamlit"
+    ],
+    "link": "https://github.com/therrshan/credit-risk-explainer",
+    "duration": "May 2025 -- Jun 2025",
+    "description": [
+      "Built an interactive, explainable AI dashboard for real-time credit risk prediction using XGBoost, Random Forest, and Logistic Regression, with full model evaluation and comparison.",
+      "Implemented local interpretability with SHAP and LIME to provide per-user prediction insights, promoting transparency and trust in AI-driven decision systems.",
+      "Designed fairness monitoring modules with disparate impact and equal opportunity metrics, supporting responsible AI and bias detection across user segments.",
+      "Deployed a Streamlit dashboard on Streamlit Cloud with real-time user input processing, automated model retraining, and CI/CD deployment via GitHub Actions for continuous delivery."
+    ]
+  },
+  {
+  "title": "AI-Powered Code Review Assistant",
+  "technologies": [
+    "Python",
+    "Java",
+    ".NET",
+    "VS Code API",
+    "LangChain",
+    "Transformers",
+    "GitHub API"
+  ],
+  "link": "",
+  "duration": "Jul 2025 -- Present",
+  "description": [
+    "Built an intelligent IDE extension for VS Code that leverages a multi-agent system to provide real-time code reviews, refactoring suggestions, and security checks across Python and Java projects.",
+    "Designed modular MCP-style components to handle syntax analysis, style enforcement, and vulnerability detection, with seamless plugin architecture supporting future upgrades.",
+    "Integrated transformer-based models to generate contextual feedback, reducing code review time by 40% and catching common errors missed by static analyzers."
+  ]
+},
+{
+  "title": "Project Management Platform",
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "Socket.io",
+    "Prisma",
+    "Docker"
+  ],
+  "link": "https://github.com/therrshan/project-management-tool",
+  "duration": "Jul 2024 -- Present",
+  "description": [
+    "Developed a comprehensive project management web application with hierarchical workspace-project-board structure, supporting role-based access control (Admin, Member, Viewer) and real-time task collaboration using Socket.io.",
+    "Architected RESTful backend API with Node.js/Express, implementing JWT authentication with refresh tokens, comprehensive CRUD operations, and Prisma ORM for type-safe database interactions with PostgreSQL.",
+    "Built responsive React frontend with TypeScript, featuring drag-and-drop Kanban boards, modal-based workflows, user search functionality, and Zustand state management, styled with Tailwind CSS for modern UI/UX.",
+    "Implemented production-ready deployment pipeline with Docker containerization, multi-stage builds for optimized images, Kubernetes manifests for orchestration, and integrated Supabase for managed PostgreSQL hosting."
+  ]
+}
+,
+{
+  "title": "AI-Based Resume Feedback Tool",
+  "technologies": [
+    "Python",
+    "LangChain",
+    "Ollama",
+    "LLaMA 3",
+    "Pinecone",
+    "Streamlit"
+  ],
+  "link": "https://github.com/therrshan/resume-analyzer",
+  "duration": "Jul 2025 -- Present",
+  "description": [
+    "Built a modular LLM pipeline leveraging LangChain and LLaMa 3 to analyze resumes across clarity, role alignment, and tone dimensions using structured prompt chaining.",
+    "Implemented a retrieval-augmented generation (RAG) system using Pinecone to enable semantic matching between resume content and job descriptions, improving contextual grounding and factual alignment.",
+    "Integrated internal evaluation metrics to assess model performance on criteria like hallucination rate, response consistency, and content coverage across a curated benchmark of annotated resumes."
+  ]
+}
+,
+{
+  "title": "Real-Time Trading Analytics Platform",
+  "technologies": [
+    "Django REST Framework",
+    "WebRTC",
+    "scikit-learn",
+    "TensorFlow",
+    "PostgreSQL",
+    "TimescaleDB"
+  ],
+  "link": "",
+  "duration": "Present",
+  "description": [
+    "Built a sophisticated trading dashboard that processes live market data streams using WebRTC for ultra-low latency communication.",
+    "Implemented custom Django middleware to handle high-frequency tick data with async views for real-time processing.",
+    "Developed ML models using scikit-learn and TensorFlow for price prediction and anomaly detection.",
+    "Optimized time-series data storage with PostgreSQL and the TimescaleDB extension.",
+    "Provided real-time portfolio analytics including risk calculations and alerting."
+  ]
+}
+,
+{
+  "title": "LLM Diagnostic Dashboard",
+  "technologies": [
+    "React",
+    "FastAPI",
+    "PyTorch",
+    "Transformers",
+    "Tailwind CSS",
+    "Recharts",
+    "Vite"
+  ],
+  "link": "",
+  "duration": "Present",
+  "description": [
+    "Built a comprehensive web-based testing platform for evaluating Large Language Models across multiple diagnostic criteria.",
+    "Developed async model management system using FastAPI to handle concurrent model loading/unloading with memory optimization.",
+    "Implemented five core diagnostic tests: hallucination detection, bias analysis, toxicity assessment, consistency evaluation, and performance benchmarking.",
+    "Created real-time test monitoring with WebSocket-like polling for live progress tracking and results visualization using Recharts.",
+    "Designed plug-and-play architecture supporting HuggingFace Transformers, Ollama, and custom model providers with hot-swappable backends."
+  ]
+}
+,
+  {
+    "title": "E-commerce Churn Prediction with Real-Time Inference",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "MLflow",
+      "Docker",
+      "GitOps"
+    ],
+    "link": "https://github.com/therrshan/churn-pred",
+    "duration": "Jan 2025 -- Mar 2025",
+    "description": [
+      "Engineered a real-time ML pipeline with MLflow for experiment tracking, version control, and continuous integration, inspired by GitOps practices for production-ready deployment.",
+      "Optimized XGBoost models via Bayesian search, achieving 92.85% accuracy and 0.94 AUC-ROC, while monitoring model fairness, bias drift, and demographic parity.",
+      "Built a low-latency inference service using FastAPI with Pydantic-based schema validation, integrated content safety filters, and deployed as a containerized microservice on OpenShift.",
+      "Architected a production-grade system using Docker Compose, with multi-container orchestration, automated health checks, and robust CI/CD triggers for real-time deployment."
+    ]
+  },
+  {
+    "title": "Predictive Analytics for NBA Player Performance and Game Outcomes",
+    "technologies": ["Python", "NBA-API", "XGBoost", "LSTM", "Data Analysis"],
+    "duration": "Nov 2024 -- Dec 2024",
+    "description": [
+      "Designed an end-to-end machine learning pipeline for predicting NBA game outcomes using real-time and historical player behavior data, achieving 83% accuracy.",
+      "Engineered 30+ advanced features from raw NBA API streams, modeling individual player dynamics, fatigue, and team synergy for outcome forecasting.",
+      "Evaluated and tuned models including XGBoost, LSTM neural networks, and ensemble methods to maximize AUC-ROC, with a 12% performance lift.",
+      "Applied time-series analysis to monitor player fatigue and injury risk signals, enhancing model personalization and temporal prediction accuracy by 7%."
+    ]
+  },
+  {
+    "title": "Pictophrases",
+    "technologies": ["Python", "RNN", "BiLSTM", "Transformer", "Image Captioning", "Keras"],
+    "link": "https://github.com/therrshan/image-captioning",
+    "duration": "Sep 2023 -- Dec 2023",
+    "description": [
+      "Conducted a study on advanced image captioning techniques using RNNs, BiLSTMs, and Transformers, achieving a 15% improvement in BLEU score over baseline RNN models.",
+      "Built the model architecture from scratch, incorporating InceptionV3 for feature extraction.",
+      "Evaluated model performance on the diverse Flickr-8k dataset using the BLEU metric, achieving an average score of 0.35.",
+      "Enhanced model accuracy through iterative training, hyperparameter tuning, and dropout regularization, improving validation accuracy by 12%.",
+      "Implemented beam search decoding for generating more diverse captions, improving caption quality by 10% according to human evaluation."
+    ]
+  },
+  {
+    "title": "Implicit Bias Annotation",
+    "technologies": ["Python", "LLAMA-2", "QLoRA", "AI Safety", "Bias and Ethics"],
+    "duration": "Jan 2024 - May 2024",
+    "description": [
+      "Led research to develop a framework for automated implicit bias annotation using fine-tuned LLAMA-2 models with QLoRA and PEFT for efficiency and scalability.",
+      "Applied RAG patterns and designed input/output safety guardrails (prompt filtering, adversarial testing) to enhance reliability and fairness of bias classification in real-world text.",
+      "Built explainability modules using LIME and SHAP for model transparency, aligning with AI ethics frameworks and responsible AI principles.",
+      "Integrated model evaluation within an MLOps pipeline designed for deployment, including drift detection, bias monitoring, and safety metric tracking."
+    ]
+  },
+   {
+    "title": "Fraud Detection in Financial Transactions",
+    "technologies": ["Python", "XGBoost", "Isolation Forest", "PCA", "Data Analysis"],
+    "duration": "Jan 2024 - Feb 2024",
+    "description": [
+      "Built a fraud detection system processing financial transactions using supervised and unsupervised learning.",
+      "Trained XGBoost on 500K labeled transactions, achieving 0.93 AUC-ROC for fraud classification.",
+      "Implemented Isolation Forest with 200 estimators, detecting 98% of anomalies in transaction data.",
+      "Reduced dimensionality by 85% using PCA, improving model runtime by 40% without performance loss.",
+      "Conducted hyperparameter tuning via GridSearchCV, reducing false positives by 12%."
+    ]
+  },
+  {
+    "title": "FixMatch Implementation",
+    "technologies": ["Python", "PyTorch", "Semi-Supervised Learning", "CIFAR-10"],
+    "link": "https://github.com/therrshan/ssl-confidence",
+    "duration": "Oct 2024 - Dec 2024",
+    "description": [
+      "Reproduced FixMatch results on CIFAR-10 using Wide ResNet-28-2, achieving 90% of the performance reported in the original paper.",
+      "Implemented weak and strong augmentations with pseudo-labeling, utilizing 95% unlabeled data for training.",
+      "Optimized hyperparameters to closely align with the original paper, achieving performance within 5%.",
+      "Conducted extensive experiments, demonstrating the effectiveness of semi-supervised learning with 10% higher accuracy than a fully supervised model.",
+      "Evaluated various augmentation strategies, improving robustness by 7% compared to standard methods."
+    ]
+  },
+  {
+    "title": "Medical Chatbot with RAG",
+    "technologies": ["Python", "Flask", "Pinecone", "LangChain", "Mistral-7B"],
+    "link": "https://github.com/therrshan/med-bot",
+    "duration": "Feb 2025 - Mar 2025",
+    "description": [
+      "Built a RAG-based chatbot leveraging LangChain and the Mistral-7B model to generate accurate, context-aware medical responses by combining LLMs with vector search databases.",
+      "Integrated Pinecone vector search for efficient indexing and retrieval of medical documents, enabling the chatbot to pull relevant and up-to-date information from a vast knowledgebase based on semantic similarity, improving response accuracy.",
+      "Developed Flask API for real-time query handling, text preprocessing, and dynamic response generation.",
+      "Designed and implemented custom prompt templates and text preprocessing pipelines, fine-tuning them to optimize the interaction between the model's inputs and outputs, which significantly improved the coherence, relevance, and accuracy of the responses generated by the LLM."
+    ]
+  },
+  {
+    "title": "ML Pipeline Orchestrator",
+    "technologies": ["Python", "Bash", "DAG", "ML Pipelines"],
+    "link": "https://github.com/therrshan/ml-orchestrator",
+    "duration": "May 2025 - Jun 2025",
+    "description": [
+      "Designed and implemented a lightweight ML pipeline orchestrator entirely from scratch to automate and manage end-to-end ML workflows without external orchestration frameworks.",
+      "Developed custom DAG-based dependency management to validate and order task execution dynamically.",
+      "Implemented state persistence and checkpointing mechanisms to enable seamless recovery from interruptions.",
+      "Built configurable error handling and retry logic, allowing pipelines to recover gracefully from step failures.",
+      "Created both a command-line interface and a Python API for flexible usage in scripts or interactive workflows.",
+      "Delivered real ML examples, including a PyTorch-based MNIST computer vision pipeline integrated with the orchestrator."
+    ]
+  },
+  {
+  "title": "ML on Encrypted Data",
+  "technologies": ["Python", "PySEAL"],
+  "link": "https://github.com/therrshan/secure-ml", 
+  "duration": "Feb 2025 - Apr 2025",
+  "description": [
+    "Built an ML inference pipeline capable of operating directly on encrypted data using the CKKS scheme from the PySEAL library, ensuring complete data privacy throughout the workflow.",
+    "Adapted standard algorithms like logistic regression and linear SVM for compatibility with encrypted arithmetic while maintaining acceptable accuracy and computational efficiency.",
+    "Evaluated performance trade-offs between encrypted and plaintext inference, achieving less than 15% accuracy drop with full confidentiality.",
+    "Containerized the full workflow using Docker with isolated modules for encryption, model training, inference, and secure decryption.",
+    "Focused on applications in privacy-sensitive domains like healthcare and finance, demonstrating end-to-end secure ML lifecycle without exposing raw data."
+  ]
+},
+
+  {
+    "title": "Kubernetes-Based ML Inference API",
+    "technologies": ["Python", "FastAPI", "Kubernetes", "Prometheus"],
+    "link": "https://github.com/therrshan/k8s-ml-inference",
+    "duration": "Mar 2025 - May 2025",
+    "description": [
+      "Built a full-stack ML inference deployment pipeline supporting real-time sentiment analysis using FastAPI.",
+      "Containerized the application using Docker and deployed scalable workloads on Kubernetes, leveraging Kustomize overlays for environment-specific configuration (dev, staging, prod).",
+      "Set up robust monitoring using Prometheus and Grafana, exposing custom application metrics and defining alert rules.",
+      "Automated continuous integration and deployment workflows using GitHub Actions, ensuring reliable and reproducible deployments across clusters."
+    ]
+  },
+  {
+    "title": "Automated Data Pipeline Using Spark and Google Cloud",
+    "technologies": ["Spark", "Google Cloud Dataproc", "BigQuery"],
+    "duration": "May 2024 - Jul 2024",
+    "description": [
+      "Designed and implemented an end-to-end automated data pipeline using Apache Spark and Google Cloud Dataproc to efficiently process and transform large-scale datasets ingested from GCS.",
+      "Automated loading of processed data into Google BigQuery for scalable querying and analytics.",
+      "Optimized data transformation with Spark, reducing pipeline runtime by 30% and improving efficiency.",
+      "Used Google Cloud to automate pipeline execution, triggering Spark jobs on a schedule using Google Cloud Scheduler."
+    ]
+  },
+  {
+    "title": "Multi-Cloud Data Integration",
+    "technologies": ["Apache NiFi", "BigQuery"],
+    "duration": "Jul - 2023 - Sept 2023",
+    "description": [
+      "Developed an automated data pipeline to integrate data from AWS S3 and Azure Blob Storage into a centralized GCS Bucket staging area.",
+      "Used Apache NiFi to batch process data from multiple cloud environments, ensuring seamless ingestion and staging of files.",
+      "Designed transformation workflows within NiFi to clean, format, and enrich data before loading it into Google BigQuery.",
+      "Automated the orchestration of batch processes and data transformations using NiFi's scheduling and flow management features, ensuring timely and efficient data integration.",
+      "Ensured data security and compliance by applying encryption protocols for data in transit and at rest."
+    ]
+  },
+  {
+    "title": "Video Panorama Generation",
+    "technologies": ["Python", "OpenCV", "Image Processing", "Computer Vision"],
+    "link": "https://github.com/therrshan/video-panorama",
+    "duration": "Aug 2024 - Dec 2024",
+    "description": [
+      "Developed a pipeline for generating stabilized panoramas from videos using modular components, reducing processing time by 25%.",
+      "Implemented color correction using histogram matching and frame selection based on vibrancy scores.",
+      "Integrated video stabilization using an open-source library, improving the overall stability and smoothness of the generated panorama by 30%.",
+      "Optimized the stitching algorithm to handle high-resolution videos and reduce artifacts, achieving a 98% success rate in smooth transitions."
+    ]
+  },
+  {
+    "title": "End-to-End Image Classification on CIFAR-10",
+    "technologies": ["Python", "PyTorch", "MLflow", "Flask", "CI/CD"],
+    "link": "https://github.com/therrshan/mlops-cifar10",
+    "duration": "Feb 2025 - Mar 2025",
+    "description": [
+      "Implemented a feature extraction pipeline for CIFAR-10 images by flattening pixel data, normalizing the data and applying standard augmentations for robust classification.",
+      "Developed a Convolutional Neural Network for image classification on the CIFAR-10 dataset, with custom logging and exception handling to extract hierarchical features from input images.",
+      "Utilized MLflow to log and track hyperparameters, performing automated hyperparameter tuning and optimization through experiment tracking to improve model performance and versioning to ensure reproducibility.",
+      "Implemented CI/CD pipeline with GitHub Actions to automate the deployment of a Flask web application, which serves the best performing model for real-time predictions."
+    ]
+  },
+  {
+    "title": "Monocular Depth Estimation with Atrous Convolutions",
+    "technologies": ["Python", "PyTorch", "Deep Learning"],
+    "link": "https://drive.google.com/file/d/10r03i984hIHRtbjEsqDx0F23kBuyiB6c/view?usp=sharing",
+    "duration": "Aug 2019 - May 2020",
+    "description": [
+      "Surveyed standard approaches for monocular depth estimation, leading to a published survey paper analyzing architectural trade-offs.",
+      "Explored the feasibility of integrating atrous convolutions into a ResNet-50-based depth estimation model to enhance spatial feature extraction.",
+      "Achieved a significant reduction in model parameters without compromising overall performance, improving computational efficiency.",
+      "Conducted comparative evaluations with existing methods, highlighting the strengths and limitations of atrous convolutions in depth estimation."
+    ]
+  },
+  {
+    "title": "Neural Networks from Scratch",
+    "technologies": ["Python", "Deep Learning"],
+    "link": "https://github.com/therrshan/nn-scratch",
+    "duration": "May 2024 - Aug 2024",
+    "description": [
+      "Built a neural network framework from scratch, implementing core components, achieving 95% accuracy on MNIST dataset.",
+      "Optimized forward / backward propagation for efficient prediction and gradient computation, reducing training time by 25%.",
+      "Integrated advanced features like early stopping, dropout, batch normalization, and regularization, improving model generalization by 10%.",
+      "Developed custom optimization algorithms (RMSProp, Adam) to improve convergence rates, accelerating training by 30%.",
+      "Implemented multi-layer networks with ReLU, Sigmoid, and Softmax activations for complex classification tasks, outperforming baseline models."
+    ]
+  },
+  {
+    "title": "Intrusion Detection System",
+    "technologies": ["Python", "Machine Learning", "Cross Validation", "Data Analysis"],
+    "link": "https://github.com/therrshan/kernel-svm-nsl-kdd",
+    "duration": "Jan 2024 - May 2024",
+    "description": [
+      "Performed exploratory data analysis and feature selection on the NSL-KDD dataset, improving feature relevance and reducing dimensionality by 15%.",
+      "Implemented Kernel SVM with rbf and polynomial kernels, and Random Forest models with cross-validation for hyperparameter tuning, achieving 94% accuracy in classifying intrusion types.",
+      "Enhanced model generalization and performance, improving the F1-score by 8% from the baseline models.",
+      "Managed the end-to-end implementation, ensuring seamless project execution from data preprocessing and feature selection to model evaluation and testing, resulting in a robust, deployable system.",
+      "Utilized ensemble methods to boost model performance and reduce overfitting, leading to a 6% increase in accuracy."
+    ]
+  },
+  {
+    "title": "Salary Prediction System",
+    "technologies": ["Python", "Machine Learning", "Selenium", "Data Analysis"],
+    "link": "https://github.com/therrshan/Salary-Predictions",
+    "duration": "May 2020 -- Jun 2020",
+    "description": [
+      "Developed a salary prediction tool using Glassdoor data to estimate salaries for data science roles.",
+      "Built a Selenium-based scraper to gather and update data from Glassdoor daily.",
+      "Engineered features from 200+ job descriptions, quantifying the importance of certain skills.",
+      "Analyzed 5,000+ job listings, identifying salary trends and skill demand for data science positions.",
+      "Optimized Linear, Lasso, Random Forest regressors with GridSearchCV, improving accuracy by 15%.",
+      "Visualized salary trends, aiding decision-making for both job seekers and employers."
+    ]
+  }
+]
